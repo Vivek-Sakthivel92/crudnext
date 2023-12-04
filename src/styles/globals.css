@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+	margin: 0;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	
+}
+
+table thead th{
+	background-color: #e9e9e9;
+	padding: 4px 15px;
+	text-align: left;
+}
+table thead th.actions{
+	text-align: center;
+}
+table tr td{
+	border-bottom: 1px solid #ddd;
+	padding: 4px 15px;
+}
+.form-sec input{
+	border: 1px solid #ddd;
+	padding: 8px 15px;
+	width: 100%;
+	border-radius: 4px;
+}
+.form-sec input[type="submit"]{
+	border-color: #0087ff;
+}
