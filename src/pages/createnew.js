@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import Layout from '@/components/layout/layout';
 import { useRouter } from 'next/router';
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL ;
+
 export default function Index() {
 const [name, setName] = useState('');
 const [email, setEmail] = useState('');
 const [error, setError] = useState();
 const router = useRouter();
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL ;
 const createUser = async (user) => {
   console.log(user)
   try {

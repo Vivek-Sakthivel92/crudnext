@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Layout from '@/components/layout/layout';
 import Link from 'next/link';
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL ;
+
 export default function Index() {
   const [isLoading,setIsLoading] = useState(true);
   const [users, setUsers] = useState([]);
@@ -23,8 +25,6 @@ export default function Index() {
   //     return () => clearTimeout(timer);
   // }, []);
 
-  const API_URL = process.env.NEXT_PUBLIC_API_URL ;
-  console.log('API_URL:', API_URL);
   useEffect(() => {
     // Fetch the list of users from your API or database
     const fetchUsers = async () => {

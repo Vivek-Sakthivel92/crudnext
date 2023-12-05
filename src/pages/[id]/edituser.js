@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Layout from '@/components/layout/layout';
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 const Index = ({ user }) => {
   const router = useRouter();
   const [userData, setUserData] = useState(user);
@@ -10,8 +12,7 @@ const Index = ({ user }) => {
   useEffect(() => {
     setUserData(user);
   }, [user]);
-
-  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+  
   const handleUpdateUser = async () => {
     try {
       const response = await fetch(`${API_URL}/users/${userData.id}`, {
