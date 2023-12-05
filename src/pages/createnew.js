@@ -8,7 +8,7 @@ const [email, setEmail] = useState('');
 const [error, setError] = useState();
 const router = useRouter();
 
-const API_URL = process.env.API_URL;
+const API_URL = process.env.NEXT_PUBLIC_API_URL ;
 const createUser = async (user) => {
   console.log(user)
   try {

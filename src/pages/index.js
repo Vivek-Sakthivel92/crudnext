@@ -23,7 +23,8 @@ export default function Index() {
   //     return () => clearTimeout(timer);
   // }, []);
 
-  const API_URL = process.env.API_URL;
+  const API_URL = process.env.NEXT_PUBLIC_API_URL ;
+  console.log('API_URL:', API_URL);
   useEffect(() => {
     // Fetch the list of users from your API or database
     const fetchUsers = async () => {
