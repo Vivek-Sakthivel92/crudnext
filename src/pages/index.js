@@ -45,6 +45,25 @@ export default function Index() {
     fetchUsers();
   }, []);
 
+  const deleteUser = async (id) => {
+    try {
+      const response = await fetch(`/api/users/${id}`, {
+        method: 'DELETE',
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        // Remove the deleted user from the local state
+        setUsers((prevUsers) => prevUsers.filter((users) => users.id !== id));
+      } else {
+        console.error('Failed to delete user:', data.error);
+      }
+    } catch (error) {
+      console.error('Error deleting user:', error);
+    }
+  };
+
     const usersList = users.map((item, index) => {
       return (<tr key={index.toString()}>
         <td>{index+1}</td>
@@ -52,8 +71,8 @@ export default function Index() {
         <td>{item.email}</td>
         <td>
           <div className='flex gap-2 justify-center'>
-            <button className='bg-[#0087ff] px-2 py-1 rounded text-white text-[12px] hover:bg-[#2096ff]'>Edit</button>
-            <button className='bg-[#ddd] px-2 py-1 rounded text-[#666] hover:text-[#fff] text-[12px] hover:bg-[#999]'>Delete</button>
+            <Link href={`/${item.id}/edituser`} className='bg-[#0087ff] px-2 py-1 rounded text-white text-[12px] hover:bg-[#2096ff]'>Edit</Link>
+            <button onClick={() => deleteUser(item.id)} className='bg-[#ddd] px-2 py-1 rounded text-[#666] hover:text-[#fff] text-[12px] hover:bg-[#999]'>Delete</button>
           </div>
         </td>
       </tr>);

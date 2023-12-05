@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 export default function Index() {
 const [name, setName] = useState('');
 const [email, setEmail] = useState('');
+const [error, setError] = useState();
 const router = useRouter();
 
 const createUser = async (user) => {
@@ -26,9 +27,11 @@ const createUser = async (user) => {
       router.push('/');
     } else {
       console.error('Failed to create user:', data.error);
+      setError(data.error);
     }
   } catch (error) {
     console.error('Error creating user:', error);
+    setError(error);
   }
 };
 
@@ -50,6 +53,9 @@ const handleSubmit = (e) =>{
             <label className='block'>Email:</label>
             <input type='text' name="email" value={email} onChange={(e)=>setEmail(e.target.value)} />
           </div>
+          {error && 
+            <p className='text-[#f00] mb-4'>{error}</p>
+          }
           <input type='submit' className='bg-[#0087ff] px-5 py-2 rounded-lg text-white hover:bg-[#2096ff] border-[#0087ff] cursor-pointer' value="Submit" />
         </form>
       </Layout>
