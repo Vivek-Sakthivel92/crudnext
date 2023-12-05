@@ -8,10 +8,11 @@ const [email, setEmail] = useState('');
 const [error, setError] = useState();
 const router = useRouter();
 
+const API_URL = process.env.API_URL;
 const createUser = async (user) => {
   console.log(user)
   try {
-    const response = await fetch('/api/users/create', {
+    const response = await fetch(`${API_URL}/users/create`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

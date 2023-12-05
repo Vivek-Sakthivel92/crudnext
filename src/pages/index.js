@@ -23,11 +23,12 @@ export default function Index() {
   //     return () => clearTimeout(timer);
   // }, []);
 
+  const API_URL = process.env.API_URL;
   useEffect(() => {
     // Fetch the list of users from your API or database
     const fetchUsers = async () => {
       try {
-        const response = await fetch('/api/users/create', {
+        const response = await fetch(`${API_URL}/users/create`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -47,7 +48,7 @@ export default function Index() {
 
   const deleteUser = async (id) => {
     try {
-      const response = await fetch(`/api/users/${id}`, {
+      const response = await fetch(`${API_URL}/users/${id}`, {
         method: 'DELETE',
       });
 

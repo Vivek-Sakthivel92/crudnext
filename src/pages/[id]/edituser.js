@@ -11,9 +11,10 @@ const Index = ({ user }) => {
     setUserData(user);
   }, [user]);
 
+  const API_URL = process.env.API_URL;
   const handleUpdateUser = async () => {
     try {
-      const response = await fetch(`/api/users/${userData.id}`, {
+      const response = await fetch(`${API_URL}/users/${userData.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -82,7 +83,7 @@ const Index = ({ user }) => {
 // This is just a placeholder for user data.
 Index.getInitialProps = async ({ query }) => {
   const { id } = query;
-  const response = await fetch(`/api/users/${id}`);
+  const response = await fetch(`${API_URL}/users/${id}`);
   const data = await response.json();
   const user = data.user || {};
   return { user };
