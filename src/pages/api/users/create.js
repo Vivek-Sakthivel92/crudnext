@@ -29,8 +29,8 @@ export default async function handler(req, res) {
       fs.writeFileSync(filePath, JSON.stringify(users, null, 2));
       
       }else{
-        console.log('This is netify users>- ' + process.env.USERS)
-        const users = process.env.USERS || '[]';
+        console.log('This is netify users>- ' + process.env.NEXT_PUBLIC_USERS)
+        const users = process.env.NEXT_PUBLIC_USERS || '[]';
         // Parse the JSON string to an array
         const usersArray = JSON.parse(users);
 
@@ -41,7 +41,7 @@ export default async function handler(req, res) {
         usersArray.push({ id, name, email });
 
         // Save the modified array back to the environment variable
-        process.env.USERS = JSON.stringify(usersArray);
+        process.env.NEXT_PUBLIC_USERS = JSON.stringify(usersArray);
 
       }
 
@@ -62,13 +62,13 @@ export default async function handler(req, res) {
         res.status(200).json({ success: true, users: users });
 
       }else{
-        console.log('This is netify users>- ' + process.env.USERS);
-        const users = process.env.USERS || '[]';
+        console.log('This is netify users>- ' + process.env.NEXT_PUBLIC_USERS);
+        const users = process.env.NEXT_PUBLIC_USERS || '[]';
         // Parse the JSON string to an array
         const usersArray = JSON.parse(users);
 
         // Save the modified array back to the environment variable
-        process.env.USERS = JSON.stringify(usersArray);
+        process.env.NEXT_PUBLIC_USERS = JSON.stringify(usersArray);
         res.status(200).json({ success: true, users: usersArray });
       }
       
