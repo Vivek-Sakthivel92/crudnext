@@ -59,7 +59,7 @@ export default async function handler(req, res) {
         // Read existing user data from the JSON file
         const jsonData = fs.readFileSync(filePath, 'utf-8');
         const users = JSON.parse(jsonData);
-        res.status(200).json({ success: true, users: users });
+        res.status(200).json({ success: true, users });
 
       }else{
         console.log('This is netify users>- ' + process.env.NEXT_PUBLIC_USERS);
@@ -69,7 +69,7 @@ export default async function handler(req, res) {
 
         // Save the modified array back to the environment variable
         process.env.NEXT_PUBLIC_USERS = JSON.stringify(usersArray);
-        res.status(200).json({ success: true, users: usersArray });
+        res.status(200).json({ success: true, usersArray });
       }
       
     } catch (error) {
