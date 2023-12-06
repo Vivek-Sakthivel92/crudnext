@@ -51,7 +51,7 @@ export default function handler(req, res) {
 
       // Write the updated user data back to the JSON file
       // fs.writeFileSync(filePath, JSON.stringify(users, null, 2));
-      handleUserArray(userIndex, id, name, email );
+      handleUserArray( id, name, email );
 
       res.status(200).json({ success: true, user: { id, name, email } });
     } catch (error) {
@@ -77,7 +77,7 @@ export default function handler(req, res) {
 
       // Write the updated user data back to the JSON file
       // fs.writeFileSync(filePath, JSON.stringify(users, null, 2));
-      handleUserArrayDel(userIndex);
+      // handleUserArrayDel(id);
 
       res.status(200).json({ success: true });
     } catch (error) {

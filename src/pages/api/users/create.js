@@ -35,13 +35,9 @@ export let usersArray = [
 ];
 
 export const handleUserArray = (index, id, name, email) =>{
-  console.log('asdf');
-  usersArray[index] = {id, name, email}
-}
-
-export const handleUserArrayDel = (index) =>{
-  console.log('asdf');
-  usersArray.splice(index, 1);
+  console.log('Updated id' + id );
+  const userUpdateIndex = usersArray.findIndex((u) => u.id === id);
+  usersArray[userUpdateIndex] = {id, name, email}
 }
 
 export default async function handler(req, res) {

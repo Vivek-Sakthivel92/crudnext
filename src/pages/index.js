@@ -62,7 +62,7 @@ export default function Index() {
         console.error('Failed to delete user:', data.error);
       }
     } catch (error) {
-      console.error('Error deleting user:', error);
+      console.error('Error deleting user:', error); 
     }
   };
 
