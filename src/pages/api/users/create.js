@@ -14,7 +14,7 @@ export default async function handler(req, res) {
       if (!name || !email) {
         return res.status(400).json({ success: false, error: 'Name and email are required' });
       }
-      if(API_URL!='https://loquacious-haupia-d67b64.netlify.app/'){
+      if(API_URL!='https://loquacious-haupia-d67b64.netlify.app/api'){
       // Read existing user data from the JSON file
       const jsonData = fs.readFileSync(filePath, 'utf-8');
       const users = JSON.parse(jsonData);
@@ -54,7 +54,7 @@ export default async function handler(req, res) {
   }else if (req.method === 'GET') {
     try {
 
-      if(API_URL!='https://loquacious-haupia-d67b64.netlify.app/'){
+      if(API_URL!='https://loquacious-haupia-d67b64.netlify.app/api'){
 
         // Read existing user data from the JSON file
         const jsonData = fs.readFileSync(filePath, 'utf-8');
