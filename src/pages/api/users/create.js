@@ -5,7 +5,6 @@ import { v4 as uuidv4 } from 'uuid';
 const filePath = path.join(process.cwd(), 'users.json');
 
 export default async function handler(req, res) {
-  console.log('Request received:', req + '/n' + res);
   if (req.method === 'POST') {
     try {
       const { name, email } = req.body;
@@ -27,13 +26,10 @@ export default async function handler(req, res) {
       // Write the updated user data back to the JSON file
       fs.writeFileSync(filePath, JSON.stringify(users, null, 2));
 
-      console.log('Response sent successfully:', res);
       res.status(200).json({ success: true, user: { id, name, email } });
     } catch (error) {
-      console.log('test');
-      console.error('Error processing request:', error);
       console.error(error);
-      res.status(500).json({ success: false, error: 'Server error' });
+      res.status(500).json({ success: false, error: error });
     }
   }else if (req.method === 'GET') {
     try {
