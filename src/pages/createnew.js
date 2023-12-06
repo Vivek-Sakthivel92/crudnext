@@ -28,10 +28,12 @@ const createUser = async (user) => {
       // Redirect to the home page
       router.push('/');
     } else {
+      console.log(API_URL + 'api url');
       console.error('Failed to create user:', data.error);
       setError(data.error);
     }
   } catch (error) {
+    console.log(API_URL + 'from catch api url');
     console.error('Error creating user:', error);
     setError(error);
   }
