@@ -38,7 +38,7 @@ export default function Index() {
         // Assuming you have an API route to fetch users
         const data = await response.json();
         console.log(data)
-        setUsers(data.users);
+        setUsers(data.usersArray);
       } catch (error) {
         console.error('Error fetching users:', error);
       }
@@ -57,7 +57,7 @@ export default function Index() {
 
       if (data.success) {
         // Remove the deleted user from the local state
-        setUsers((prevUsers) => prevUsers.filter((users) => users.id !== id));
+        setUsers((prevUsers) => prevUsers.filter((usersArray) => usersArray.id !== id));
       } else {
         console.error('Failed to delete user:', data.error);
       }
