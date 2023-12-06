@@ -2,10 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Layout from '@/components/layout/layout';
 import { useRouter } from 'next/router';
 
-console.log('API_URL:', process.env.NEXT_PUBLIC_API_URL);
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api';
-console.log('Final API_URL:', API_URL);
-
 
 export default function Index() {
 const [name, setName] = useState('');
@@ -16,7 +13,6 @@ const router = useRouter();
 const createUser = async (user) => {
   console.log(user)
   try {
-    console.log('Fetching data before:', `${API_URL}/users/create`);
     const response = await fetch(`${API_URL}/users/create`, {
       method: 'POST',
       headers: {
@@ -26,20 +22,17 @@ const createUser = async (user) => {
     });    
 
     const data = await response.json();
-    console.log('Fetching data after:', `${API_URL}/users/create`);
     console.log(data)
+    console.log(API_URL + ' api url');
     if (data.success) {
-      console.log(API_URL + 'api url');
       console.log('User created:', data.user);
       // Redirect to the home page
       router.push('/');
     } else {
-      console.log(API_URL + 'api url');
       console.error('Failed to create user:', data.error);
       setError(data.error);
     }
   } catch (error) {
-    console.log(API_URL + 'from catch api url');
     console.error('Error creating user:', error);
     setError(error);
   }

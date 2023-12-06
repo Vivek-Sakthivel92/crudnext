@@ -2,9 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Layout from '@/components/layout/layout';
 import Link from 'next/link';
 
-console.log('API_URL:', process.env.NEXT_PUBLIC_API_URL);
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api';
-console.log('Final API_URL:', API_URL);
 
 export default function Index() {
   const [isLoading,setIsLoading] = useState(true);

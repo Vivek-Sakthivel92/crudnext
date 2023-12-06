@@ -2,9 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Layout from '@/components/layout/layout';
 
-console.log('API_URL:', process.env.NEXT_PUBLIC_API_URL);
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api';
-console.log('Final API_URL:', API_URL);
 
 const Index = ({ user }) => {
   const router = useRouter();
