@@ -23,10 +23,10 @@ const createUser = async (user) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(user),
-    });
-    console.log('Fetching data after:', `${API_URL}/users/create`);
+    });    
 
     const data = await response.json();
+    console.log('Fetching data after:', `${API_URL}/users/create`);
     console.log(data)
     if (data.success) {
       console.log(API_URL + 'api url');
