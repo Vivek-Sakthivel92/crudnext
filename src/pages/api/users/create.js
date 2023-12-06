@@ -6,7 +6,7 @@ const filePath = path.join(process.cwd(), 'users.json');
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api';
 
-let usersArray = [
+export let usersArray = [
   {
     "id": "0fe23d9c-cec9-4f2e-a4f6-78ed072ef195",
     "name": "gemvicky & company 1",
@@ -33,6 +33,16 @@ let usersArray = [
     "email": "sourav@hexalytics.com"
   }
 ];
+
+export const handleUserArray = (index, id, name, email) =>{
+  console.log('asdf');
+  usersArray[index] = {id, name, email}
+}
+
+export const handleUserArrayDel = (index) =>{
+  console.log('asdf');
+  usersArray.splice(index, 1);
+}
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {

@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { usersArray, handleUserArray, handleUserArrayDel } from './create';
 
 const filePath = path.join(process.cwd(), 'users.json');
 
@@ -9,8 +10,9 @@ export default function handler(req, res) {
   if (req.method === 'GET') {
     try {
       // Read existing user data from the JSON file
-      const jsonData = fs.readFileSync(filePath, 'utf-8');
-      const users = JSON.parse(jsonData);
+      // const jsonData = fs.readFileSync(filePath, 'utf-8');
+      // const users = JSON.parse(jsonData);
+      const users = usersArray;
 
       // Find the user with the specified ID
       const user = users.find((u) => u.id === id);
@@ -33,8 +35,9 @@ export default function handler(req, res) {
       }
 
       // Read existing user data from the JSON file
-      const jsonData = fs.readFileSync(filePath, 'utf-8');
-      const users = JSON.parse(jsonData);
+      // const jsonData = fs.readFileSync(filePath, 'utf-8');
+      // const users = JSON.parse(jsonData);
+      const users = usersArray;
 
       // Find the user with the specified ID
       const userIndex = users.findIndex((u) => u.id === id);
@@ -47,7 +50,8 @@ export default function handler(req, res) {
       users[userIndex] = { id, name, email };
 
       // Write the updated user data back to the JSON file
-      fs.writeFileSync(filePath, JSON.stringify(users, null, 2));
+      // fs.writeFileSync(filePath, JSON.stringify(users, null, 2));
+      handleUserArray(userIndex, id, name, email );
 
       res.status(200).json({ success: true, user: { id, name, email } });
     } catch (error) {
@@ -57,8 +61,9 @@ export default function handler(req, res) {
   } else if (req.method === 'DELETE') {
     try {
       // Read existing user data from the JSON file
-      const jsonData = fs.readFileSync(filePath, 'utf-8');
-      const users = JSON.parse(jsonData);
+      // const jsonData = fs.readFileSync(filePath, 'utf-8');
+      // const users = JSON.parse(jsonData);
+      const users = usersArray;
 
       // Find the user with the specified ID
       const userIndex = users.findIndex((u) => u.id === id);
@@ -71,7 +76,8 @@ export default function handler(req, res) {
       users.splice(userIndex, 1);
 
       // Write the updated user data back to the JSON file
-      fs.writeFileSync(filePath, JSON.stringify(users, null, 2));
+      // fs.writeFileSync(filePath, JSON.stringify(users, null, 2));
+      handleUserArrayDel(userIndex);
 
       res.status(200).json({ success: true });
     } catch (error) {
