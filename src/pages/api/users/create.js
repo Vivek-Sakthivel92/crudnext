@@ -30,6 +30,7 @@ export default async function handler(req, res) {
       console.log('Response sent successfully:', res);
       res.status(200).json({ success: true, user: { id, name, email } });
     } catch (error) {
+      console.log('test');
       console.error('Error processing request:', error);
       console.error(error);
       res.status(500).json({ success: false, error: 'Server error' });
