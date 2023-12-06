@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Layout from '@/components/layout/layout';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://loquacious-haupia-d67b64.netlify.app/';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://loquacious-haupia-d67b64.netlify.app';
 
 const Index = ({ user }) => {
   const router = useRouter();
