@@ -16,6 +16,7 @@ const router = useRouter();
 const createUser = async (user) => {
   console.log(user)
   try {
+    console.log('Fetching data before:', `${API_URL}/users/create`);
     const response = await fetch(`${API_URL}/users/create`, {
       method: 'POST',
       headers: {
@@ -23,6 +24,7 @@ const createUser = async (user) => {
       },
       body: JSON.stringify(user),
     });
+    console.log('Fetching data after:', `${API_URL}/users/create`);
 
     const data = await response.json();
     console.log(data)
