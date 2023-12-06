@@ -4,6 +4,8 @@ import { v4 as uuidv4 } from 'uuid';
 
 const filePath = path.join(process.cwd(), 'users.json');
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api';
+
 export default async function handler(req, res) {
   if (req.method === 'POST') {
     try {
@@ -12,7 +14,7 @@ export default async function handler(req, res) {
       if (!name || !email) {
         return res.status(400).json({ success: false, error: 'Name and email are required' });
       }
-
+      if(API_URL=='https://loquacious-haupia-d67b64.netlify.app/'){
       // Read existing user data from the JSON file
       const jsonData = fs.readFileSync(filePath, 'utf-8');
       const users = JSON.parse(jsonData);
@@ -25,7 +27,18 @@ export default async function handler(req, res) {
 
       // Write the updated user data back to the JSON file
       fs.writeFileSync(filePath, JSON.stringify(users, null, 2));
+      
+      }else{
 
+        const users = process.env.USERS || '[]';
+        // Parse the JSON string to an array
+        const usersArray = JSON.parse(users);
+        // Modify the array as needed
+        usersArray.push({ id, name, email });
+        // Save the modified array back to the environment variable
+        process.env.USERS = JSON.stringify(usersArray);
+
+      }
       res.status(200).json({ success: true, user: { id, name, email } });
     } catch (error) {
       console.error(error);
