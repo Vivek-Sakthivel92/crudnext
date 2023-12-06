@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Layout from '@/components/layout/layout';
 import Link from 'next/link';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://loquacious-haupia-d67b64.netlify.app';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://loquacious-haupia-d67b64.netlify.app/api';
 
 export default function Index() {
   const [isLoading,setIsLoading] = useState(true);
