@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Layout from '@/components/layout/layout';
 import { useRouter } from 'next/router';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://loquacious-haupia-d67b64.netlify.app/api';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://loquacious-haupia-d67b64.netlify.app/';
 
 
 export default function Index() {
